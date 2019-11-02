@@ -28,15 +28,10 @@
   },
   
     "content_scripts": {
-    "matches": ["*://*question_list.html*"],
+    "matches": [<all_urls>],
     "js": [
-     "pages/form_submission.js"
+     "pages/form_submission.js", "pages/question_answer_interface.js"
     ]
-  },
-  
-      "content_scripts": {
-    "matches": ["*://*landing_page.html*"],
-    "js": ["pages/question_answer_interface.js"]
   },
 
   "permissions": ["proxy", "storage", "<all_urls>"]
