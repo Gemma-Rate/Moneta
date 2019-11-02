@@ -28,7 +28,7 @@
   },
   
     "content_scripts": {
-    "scripts": [
+    "js": [
      "pages/form_submission.js","pages/question_answer_interface.js"
     ]
   },
