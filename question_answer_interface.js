@@ -1,71 +1,64 @@
 
-function makeDummyQuestion(){
+$(document).ready(function(){
+    // Get the information in the question object and put it into radio buttons.
     
-        let questionInfo = {
+     let questionObject = {
                                    question : 'What colour is the sky at noon?',
                                    answerOptions : ['blue', 'green', 'pink', 'yellow'],
                                    answerCorrect  : 'blue'
                                     }; 
-       return questionInfo
-}
-
-
-function questionDataToButton(questionObject) {
-    // Get the information in the question object and put it into radio buttons.
     
-    var questionText = questionObject['question'];
-    var questionOptions = questionObject['answerOptions'];
-    var questionCorrect = questionObject['answerCorrect '];
+    questionText = questionObject.question
+    questionCorrect = questionObject.answerCorrect
+    questionOptions = questionObject.answerOptions
     
-    document.getElementById('questionText').innerHTML = questionText;
-    // Insert questionText string into 'questionText' location in HTML.
+    $('#questionText').text(questionText);
+    // Insert questionText string into 'questionText' location in HTML.D
     
     for (c in questionOptions) {
         
-        var node = document.createElement("DIV");
+        var node = $('#answersButtons').append("<div></div>");
         
-        var radio = document.createElement('INPUT');
-        var label = document.createElement('LABEL');
+        var radioStr = '<input type="radio" name= "answers"' + 'value=' + questionOptions[c] + '/>'  
+        var radio = $(radioStr);
+        // Make input into a radio button. Give the same name so they become a radio group!
         
-        radio.setAttribute('type', 'radio');
-        // Make input into a radio button.
-        radio.setAttribute('name', 'answers');
-        // Give the same name so they become a radio group!
-        radio.setAttribute('value', questionOptions[c]);
-        
-        label.innerHTML = questionOptions[c]
+        var label = $("<label>").text(questionOptions[c]);
         // Label with the answer choice.
         
-        node.appendChild(radio);
-        node.appendChild(label);
-        document.getElementById("answersButtons").appendChild(node);
+        radio.appendTo(node);
+        label.appendTo(node);
+        
+        $("#answersButtons").append(node);
         
     }
         
-}
+});
+
       
  
-function getAnswerInput( ){
+ $(document).ready(function(){
+    $("#sub").click(function() {
     // Get the label of the selected answer (to compare to the correct answer)...
     
-     var radioInput = document.getElementById('answersButtons');
-     
-     //for (c in radioInput.childNodes) {
-         
-      //   if (radioInput.childNodes[c].checked){
-         
-         //    var isSelected= radioInput.elements[c].value;
-             // Get answer if checked.
+           var radioVal = $('input[name="answers"]:checked').val();
+           // Get checked value result.
+           $('#demo').html('Hello') 
+           
+           var rightAnswer = radioVal==questionCorrect;
+           // Boolean to compare values.
+
+            $('#demo2').html(rightAnswer) 
+            
+
+      //var x = document.URL;
              
-      var x = document.URL;
-             
-      document.getElementById("demo").innerHTML = 'hello' //radioInput.childNodes[0].nodeValue;
      // document.getElementById("demo").innerHTML = x ;
-             
-        // }
+            
          
-    // }
-}
+    //}
+        });
+ });
      
-     
+
     
