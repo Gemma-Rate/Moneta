@@ -28,7 +28,7 @@
   },
   
     "content_scripts": {
-    "matches": ['pages/question_list.html','pages/landing_page.html']
+    "matches": ['pages/question_list.html','pages/landing_page.html'],
     "js": [
      "pages/form_submission.js","pages/question_answer_interface.js"
     ]
