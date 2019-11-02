@@ -59,7 +59,7 @@ function getAnswerInput( ){
              
       var x = document.URL;
              
-      document.getElementById("demo").innerHTML = radioInput.childNodes[0].nodeValue;
+      document.getElementById("demo").innerHTML = 'hello' //radioInput.childNodes[0].nodeValue;
      // document.getElementById("demo").innerHTML = x ;
              
         // }
