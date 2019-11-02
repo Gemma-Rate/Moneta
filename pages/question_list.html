@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<!This tells the document it is a html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!Metadata>
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!This is the document header>
+    <meta charset="UTF-8">
+    <title>Moneta Questions</title>
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous">
+              </script>
+</head>
+
+<body>
+
+    <!Top bar:>
+
+    <nav class="nav1">
+        <a href="landing_page.html">Current question</a>
+        <a href="contact.html">Contact</a>
+        <!a are hyperlinks>
+    </nav>
+    
+    <section class="head1">
+        <!div is a division, or section>
+        <h1>Modify Questions</h1>
+        <p>Enter the question and answers in the fields, then click "Submit" to update!</p>
+        <!p is a paragraph>
+    </section>
+    
+    <script src='form_submission.js'> 
+    </script>
+   
+    
+    <form id='question_form'>
+      Question: <input type="text" name='question'><br>
+      Possible Answers: <input type="text" name='answer_choices'><br>
+      Correct Answer: <input type="text" name='true_answer'><br><br>
+      <input type="button" onclick='saveQuestion()' value="Submit">
+    </form>
+
+  
+  </body>
+</html>
+  
+  
+  
+  
+  

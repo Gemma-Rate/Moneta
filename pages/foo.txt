@@ -1,0 +1,6 @@
+'Hello!'
+
+# Cookie to store data in json
+# event in html form -cookies.js
+# JSON.parse (string from JSON to object in javascript).
+# JSON . stringify (object to string).
