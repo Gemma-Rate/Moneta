@@ -18,19 +18,13 @@
 
   "background": {
     "scripts": [
-      "background/proxy-handler.js"
+      "background/proxy-handler.js","pages/form_submission.js","pages/question_answer_interface.js"
     ]
   },
 
   "options_ui": {
     "page": "options/options.html",
     "browser_style": true
-  },
-  
-    "pages": {
-    "scripts": [
-      "pages/form_submission.js","pages/question_answer_interface.js"
-    ]
   },
 
   "permissions": ["proxy", "storage", "<all_urls>"]

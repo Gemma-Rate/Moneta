@@ -38,8 +38,7 @@ function handleProxyRequest(requestInfo) {
 // Pass url to next page
      var out_url = url.hostname;
      var queryString = "?para1=" + out_url;
-     browser.tabs.update({"url": "/Moneta/pages/landing_page.html" + queryString});
-     web
+     browser.tabs.update({"url": "/pages/landing_page.html" + queryString});
   }
 // Return instructions to open the requested webpage
   return {type: "direct"};
