@@ -31,6 +31,7 @@ function questionDataToButton(questionObject) {
         // Make input into a radio button.
         radio.setAttribute('name', 'answers');
         // Give the same name so they become a radio group!
+        radio.setAttribute('value', questionOptions[c]);
         
         label.innerHTML = questionOptions[c]
         // Label with the answer choice.
@@ -38,8 +39,33 @@ function questionDataToButton(questionObject) {
         node.appendChild(radio);
         node.appendChild(label);
         document.getElementById("answersButtons").appendChild(node);
+        
     }
         
 }
       
+ 
+function getAnswerInput( ){
+    // Get the label of the selected answer (to compare to the correct answer)...
+    
+     var radioInput = document.getElementById('answersButtons');
+     
+     //for (c in radioInput.childNodes) {
+         
+      //   if (radioInput.childNodes[c].checked){
+         
+         //    var isSelected= radioInput.elements[c].value;
+             // Get answer if checked.
+             
+      var x = document.URL;
+             
+      document.getElementById("demo").innerHTML = radioInput.childNodes[0].nodeValue;
+     // document.getElementById("demo").innerHTML = x ;
+             
+        // }
+         
+    // }
+}
+     
+     
     

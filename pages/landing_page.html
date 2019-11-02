@@ -45,20 +45,24 @@
         <section class="head2">
         
             <h1>Question for you:</h1>
+            
+            <script src="question_answer_interface.js">
+             </script>  
 
             <form>
                   <p id='questionText'></p>
                   <div id='answersButtons'> </div>
-                  
-                  <script src="question_answer_interface.js">
-                 </script>           
-                  
+                              
                   <script>
                        var qu = makeDummyQuestion()
                        window.onload = questionDataToButton(qu)
                  </script>
                  
-                </form>
+                 <input type="button" onclick='getAnswerInput()' value="Submit">
+                 
+           </form>
+
+           <p id='demo'></p>
         
         </section>
 
