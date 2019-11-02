@@ -26,13 +26,6 @@
     "page": "options/options.html",
     "browser_style": true
   },
-  
-    "content_scripts": {
-    "matches": [<all_urls>],
-    "js": [
-     "pages/form_submission.js", "pages/question_answer_interface.js"
-    ]
-  },
 
   "permissions": ["proxy", "storage", "<all_urls>"]
 
