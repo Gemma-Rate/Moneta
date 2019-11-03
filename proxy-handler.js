@@ -23,7 +23,7 @@ browser.storage.onChanged.addListener(changeData => {
 // Managed the proxy
 
 // Listen for a request to open a webpage
-browser.proxy.onRequest.addListener(handleProxyRequest, {urls: ["<all_urls>"]});
+browser.tabs.onCreated(browser.proxy.onRequest.addListener(handleProxyRequest, {urls: ["<all_urls>"]}));
 
 //browser.proxy.onRequest.removeListener(handleProxyRequest, {urls: ["<all_urls>"]});
 
@@ -38,10 +38,13 @@ function handleProxyRequest(requestInfo) {
 // Pass url to next page
      var out_url = url.hostname;
      var queryString = "?para1=" + out_url;
+     
      browser.tabs.update({"url": "/landing_page.html" + queryString});
+     browser.tabs.onCreated(browser.proxy.onRequest.removeListener(handleProxyRequest, {urls: ["<all_urls>"]}));
+     //setTimeout(browser.tabs.onCreated(browser.proxy.onRequest.addListener(handleProxyRequest, {urls: ["<all_urls>"]})), 10000)
   }
-// Return instructions to open the requested webpage
   return {type: "direct"};
+  // Return instructions to open the requested webpage
 }
 
 // Log any errors from the proxy script
