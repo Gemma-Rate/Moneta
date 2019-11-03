@@ -1,0 +1,61 @@
+body {
+  background-color: white;
+  font-family: Arial;
+  font-size: 15px;
+}
+
+.head1 {
+  color: DarkOliveGreen;
+  text-align: center;
+  background-image: url('Canva - White Ballpoint Pen on Book Pages-mod.jpg');
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-color: #cccc;
+  padding: 20px;
+  font-size: 30px;
+  }
+  
+.img {
+      opacity: 0.3;
+      filter: alpha(opacity=30); /* For IE 8 & 9 (more valid) */
+    }
+  
+  .nav1 {
+  color: white;
+  text-align: left;
+  background-color: DarkOliveGreen;
+  padding: 20px;
+  font-size: 15px;
+  }
+  
+  
+ /* mouse over link */
+a:hover {
+  color: black;
+}
+
+a {
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  font-family: Arial;
+  text-decoration: none;
+}
+
+.head2 {
+ /* Main column */
+  color: DarkOliveGreen;
+  flex: 100%;
+  font-size: 15px;
+  padding: 50px; /* Some padding */
+  background-color: white;
+  }
+  
+  footer {
+/* footer element */
+  color: white;
+  text-align: left;
+  background-color: DarkOliveGreen;
+  padding: 1px;
+  font-size: 10px;
+  font-family: Arial;
+  }
