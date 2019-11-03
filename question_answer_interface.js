@@ -5,7 +5,7 @@ $(document).ready(function(){
      let questionObject = {
                                    question : 'What colour is the sky at noon?',
                                    answerOptions : ['blue', 'green', 'pink', 'yellow'],
-                                   answerCorrect  : 'blue'
+                                   answerCorrect  : 'blue'+'/'
                                     }; 
     
     questionText = questionObject.question
@@ -43,15 +43,26 @@ $(document).ready(function(){
     
            var radioVal = $('input[name="answers"]:checked').val();
            // Get checked value result.
-           $('#demo').html('Hello') 
-           
-           var rightAnswer = radioVal==questionCorrect;
+ 
+           var rightAnswer = Boolean(radioVal==questionCorrect);
            // Boolean to compare values.
-
-            $('#demo2').html(rightAnswer) 
+            
+            if (rightAnswer){
+            // Let the user go through to the blocked page:
+                $('#demo').html([radioVal, questionCorrect, rightAnswer]) 
+                var url = document.URL;
+                url = url.split('=');
+                rightUrl = 'https://'+url[url.length-1]
+                $(location).attr('href',rightUrl);
+            }
+            //else{
+                //setTimeout(function(){ alert("Incorrect! You can now try again."); },30000);
+                //console.log('timeout')
+                
+           // }
             
 
-      //var x = document.URL;
+      //
              
      // document.getElementById("demo").innerHTML = x ;
             
