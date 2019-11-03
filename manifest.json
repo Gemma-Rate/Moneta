@@ -18,8 +18,16 @@
 
   "background": {
     "scripts": [
-      "proxy-handler.js"
+      "proxy-handler.js",
+      "open_page.js"
     ]
+  },
+
+  "browser_action": {
+    "default_icon": {
+     "32" : "icons/quicknote-32.png"
+    },
+    "default_title": "Quicknote"
   },
 
   "options_ui": {
