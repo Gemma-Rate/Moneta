@@ -1,86 +1,103 @@
 /* initialize variables */
-var inputQuestion = document.querySelector('.question_form.question input');
-
+var inputQuestion = document.querySelector('.question input');
+var inputChoices = document.querySelector('.answer_choices input');
+var inputCorrect = document.querySelector('.true_answer input');
 
 var addBtn = document.querySelector('.add');
-addBtn.addEventListener('click', addAddress);
+addBtn.addEventListener('click', addQuestion);
 
-var addressContainer = document.querySelector('.address-container');
+var countContainer = document.querySelector('.count');
+var listContainer = document.querySelector('.list');
 
 /* generic error handler */
 function onError(error) {
   console.log(error);
 }
 
-/* display stored addresses on startup */
-displayAddresses();
+/* display question count on startup */
+displayCount();
+//displayList();
 
 /* Add a note to the display, and storage */
-function addAddress() {
-  // get the new URL from the text input
-  var newAddress = addressInput.value;
+function addQuestion() {
+    // get the input from the text input
+    var newQuestion = inputQuestion.value;
+    var newChoices = inputChoices.value;
+    var newCorrect = inputCorrect.value;
 
-  // get the existing addresses
-  var ret = browser.storage.local.get("blocked");
-  ret.then((result) => {
-    var addressList = Object.values(result);
-    addresses = addressList[0]
-
-    // add the new address to the list
-    addresses.push(newAddress);
-
-    // store the new list of addresses
-    var ret = browser.storage.local.set({"blocked": addresses});
-    ret.then(
+    // store the new question and answer
+    var ret = browser.storage.local.set({[newQuestion]: [newChoices, newCorrect]});
+    ret.then(() => {
       // redo the list
-      displayAddresses(), onError);
-
-  }, onError);
+      displayCount();
+      //displayList();
+    }, onError);
 }
 
-/* Display all blocked addresses */
-function displayAddresses() {
+/* Display count of questions */
+function displayCount() {
   // clear any existing entries
-  while (addressContainer.firstChild) {
-    addressContainer.removeChild(addressContainer.firstChild);
+  while (countContainer.firstChild) {
+    countContainer.removeChild(countContainer.firstChild);
   }
 
-  // create note display box
-  var list = document.createElement('div');
-  var listDisplay = document.createElement('div');
-  var listH = document.createElement('h2');
+  // create display box
+  var count = document.createElement('div');
+  var countDisplay = document.createElement('div');
+  var countPara = document.createElement('p');
 
-  listDisplay.appendChild(listH);
+  countDisplay.appendChild(countPara);
 
-  // fetch all addresses
-  var ret = browser.storage.local.get("blocked");
-  ret.then((result) => {
-    var addressList = Object.values(result);
-    addresses = addressList[0]
+  // fetch all questions
+  var ret = browser.storage.local.get(null);
+  ret.then((results) => {
+    var questions = Object.keys(results);
+    var countNumber = questions.length - 2;
 
-    var countNumber = addresses.length;
-    listH.textContent = "There are " + countNumber + " blocked addresses:";
+    countPara.textContent = "There are currently " + countNumber + " questions in the database. Add another?";
 
-    // loop over all addresses
-    for (let address of addresses) {
-      var listPara = document.createElement('p');
-      listPara.textContent = address;
-      listDisplay.appendChild(listPara);
+    /* loop over all addresses
+    for (let question of questions) {
+      var questionPara = document.createElement('p');
+      questionPara.textContent = question;
+      countDisplay.appendChild(questionPara);
     }
+    */
   }, onError);
 
-  // Add a clear all button
-  var clearBtn = document.createElement('button');
-  clearBtn.setAttribute('class','delete');
-  clearBtn.textContent = 'Clear all addresses';
-  clearBtn.addEventListener('click',(e) => {
-    const evtTgt = e.target;
-    evtTgt.parentNode.parentNode.parentNode.removeChild(evtTgt.parentNode.parentNode);
-    browser.storage.local.set({"blocked": []});
-  });
-  listDisplay.appendChild(clearBtn);
+  count.appendChild(countDisplay);
 
-  list.appendChild(listDisplay);
-
-  addressContainer.appendChild(list);
+  countContainer.appendChild(count);
 }
+
+/* Display list of questions */
+function displayList() {
+    // clear any existing entries
+    while (listContainer.firstChild) {
+        listContainer.removeChild(listContainer.firstChild);
+    }
+
+    // create display box
+    var list = document.createElement('div');
+    var listDisplay = document.createElement('div');
+
+    // fetch all questions
+    var ret = browser.storage.local.get(null);
+    ret.then((results) => {
+        var questions = Object.keys(results);
+
+        //loop over all addresses
+        for (let question of questions) {
+        if(question != "blocked") {
+            var questionPara = document.createElement('p');
+            questionPara.textContent = question;
+            listDisplay.appendChild(questionPara);
+        }
+    }
+
+    }, onError);
+
+    list.appendChild(listDisplay);
+
+    listContainer.appendChild(list);
+  }

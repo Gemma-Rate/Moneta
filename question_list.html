@@ -30,21 +30,34 @@
     </nav>
 
     <section class="head1">
-        <h1>Modify Questions</h1>
+        <h1>Modify questions</h1>
         <p>Enter the question and answers in the fields, then click "Submit" to update!</p>
     </section>
 
-    <script src='form_submission.js'>
-    </script>
-
     <section class="head2">
-    <form id='question_form'>
-      Question: <input type="text" name="question"><br>
-      Possible Answers: <input type=text name="answer_choices"><br>
-      Correct Answer: <input type="text" name="true_answer"><br><br>
-      <input type="button" id="btn1" value="Submit">
-    </form>
-   </section>
+    <div class="count">
+    </div>
+
+    <div class="question">
+        <p>Question:</p> <input type="text" class="question">
+    </div>
+    <div class="answer_choices">
+        <p>Possible Answers:</p> <input type="text" class="question">
+    </div>
+    <div class="true_answer">
+        <p>Correct Answer:</p> <input type="text" class="question">
+    </div>
+    <div class="button">
+        <button class="add">Submit</button>
+    </div>
+
+    <div class="list">
+    </div>
+
+    </section>
+
+    <script src='question_list.js'>
+    </script>
 
     <footer>
         <!This is a footer at the bottom of a page>
