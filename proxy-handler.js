@@ -1,23 +1,14 @@
-// Initialize the list of blocked hosts
-let blockedHosts = ["www.youtube.com", "en-gb.facebook.com"];
+// Some default addresses
+let defaultAddresses = ["www.youtube.com", "en-gb.facebook.com"];
 
 // Set the default list on installation.
 browser.runtime.onInstalled.addListener(details => {
-  browser.storage.local.set({
-    blockedHosts: blockedHosts
-  });
-});
-
-// Get the stored list
-browser.storage.local.get(data => {
-  if (data.blockedHosts) {
-    blockedHosts = data.blockedHosts;
-  }
+  browser.storage.local.set({"blocked": defaultAddresses});
 });
 
 // Listen for changes in the blocked list
 browser.storage.onChanged.addListener(changeData => {
-  blockedHosts = changeData.blockedHosts.newValue;
+  blockedHosts = changeData.blocked.newValue;
 });
 
 // Managed the proxy
@@ -29,7 +20,7 @@ browser.proxy.onRequest.addListener(handleProxyRequest, {urls: ["<all_urls>"]});
 
 // On the request to open a webpage
 function handleProxyRequest(requestInfo) {
-// Read the web address of the page to be visited 
+// Read the web address of the page to be visited
   const url = new URL(requestInfo.url);
 // Determine whether the domain in the web address is on the blocked hosts list
   if (blockedHosts.indexOf(url.hostname) != -1) {
@@ -48,6 +39,3 @@ function handleProxyRequest(requestInfo) {
 browser.proxy.onError.addListener(error => {
   console.error(`Proxy error: ${error.message}`);
 });
-
-
-
