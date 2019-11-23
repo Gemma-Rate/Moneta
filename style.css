@@ -5,24 +5,30 @@ body {
 }
 
 .head1 {
-  color: DarkOliveGreen;
+  color: #1F2124;
   text-align: center;
-  background-image: url('Canva - White Ballpoint Pen on Book Pages-mod.jpg');
+  background-image: url('Pencils_on_revision_image_mod.jpg');
   background-size: cover; /* Resize the background image to cover the entire container */
   background-color: #cccc;
   padding: 20px;
   font-size: 30px;
+  font-weight: bold;
   }
 
 .img {
       opacity: 0.3;
       filter: alpha(opacity=30); /* For IE 8 & 9 (more valid) */
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      max-width: 100%;
     }
 
   .nav1 {
-  color: white;
+  color: #1F2124;
   text-align: left;
-  background-color: DarkOliveGreen;
+  background-color: #F6B352;
   padding: 20px;
   font-size: 15px;
   }
@@ -30,11 +36,11 @@ body {
 
  /* mouse over link */
 a:hover {
-  color: black;
+  color: white;
 }
 
 a {
-  color: white;
+  color: #1F2124;
   padding: 10px;
   font-size: 15px;
   font-family: Arial;
@@ -43,19 +49,20 @@ a {
 
 .head2 {
  /* Main column */
-  color: DarkOliveGreen;
+  color: #1F2124;
   flex: 100%;
   font-size: 15px;
   padding: 50px; /* Some padding */
-  background-color: white;
+  font-weight: bold;
+  background-color: BlanchedAlmond ;
   }
 
 
   footer {
 /* footer element */
-  color: white;
+  color: #1F2124;
   text-align: left;
-  background-color: DarkOliveGreen;
+  background-color: #F6B352;
   padding: 1px;
   font-size: 10px;
   font-family: Arial;
